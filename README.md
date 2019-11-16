@@ -1,7 +1,7 @@
 # WOD Fetcher
 Fetch all workouts from website
 
-Using the command line tool curl, the app fetches all the workouts posted on a crossfit gym's website and creates searchable files of the workout.
+Using the command line tool curl, the app fetches all the workouts posted on a CrossFit gym's website and creates searchable files of the workout.
 
 To run the script, type the following on the command line from within the project folder:
 
