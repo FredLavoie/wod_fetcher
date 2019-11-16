@@ -1,0 +1,23 @@
+{
+  "name": "wod_fetcher",
+  "version": "1.0.0",
+  "description": "Fetch all workouts from website",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FredLavoie/wod_fetcher.git"
+  },
+  "author": "FL",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FredLavoie/wod_fetcher/issues"
+  },
+  "homepage": "https://github.com/FredLavoie/wod_fetcher#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "request": "^2.88.0"
+  }
+}
