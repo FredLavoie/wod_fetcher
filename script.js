@@ -1,7 +1,7 @@
 require('dotenv').config();
 const fs			= require('fs');
 const request 		= require('request');
-const cherio		= require('cherio');
+const cheerio		= require('cheerio');
 
 let test = 'january-15-2018/';
 
@@ -16,11 +16,11 @@ request(options, function(error, response, html) {
 		return;
 	}
 	if (response.statusCode !== 200) {
-		console.log();
-		
+		console.log(response.statusCode);
 	}
-
-
-
+	const $ = cheerio.load(html);
+	const content = $('.entry-content');
+	console.log(content.text());
+	
 });
 
