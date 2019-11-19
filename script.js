@@ -13,37 +13,35 @@ const currentDay	= moment().format('Do');
 const currentDay2	= moment().format('DD');
 const currentMonth	= moment().format('MMM');
 const currentMonth2	= moment().format('MMMM');
-const currentYear	= moment().format('YYYY');
+const currentYear	= Number(moment().format('YYYY'));
 
 /* 
 *************************************************************************/
-console.log('currentDay: ', currentDay);
-console.log('currentDay2: ', currentDay2);
-console.log('currentMonth: ', currentMonth);
-console.log('currentMonth2: ', currentMonth2);
-console.log('currentDay: ', currentYear);
 
 if(!yearParam || !monthParam) {
 	console.log('Input parameter(s) missing');
-} else if(!months.includes(monthParam)) {
-	console.log('Invalid month parameter');
 } else {
-	for (const month of months) {
-		for (let i = 1; i < months[month].days; i++) {
-			let dateVariable = `${month}-${}-${yearParam}`;
-
+	for (let y = yearParam; y <= currentYear; y++) {
+		for (const month of months) {
+			console.log('month: ', month);
+			console.log('months[month]: ', month[month]);  // <-- problem here
+			console.log('months[month].days: ', month[month].days);
+			
+			for (let d = 1; d <= months[month].days; d++) {
+				let dateVariable = `${month}-${d}-${y}/`;
+				console.log(dateVariable);
+				// fetchData(dateVariable);
+			}
 		}
-	}
+	}	
 }
-
-let test = 'january-15-2018/';
 
 /* FUNCTIONS
 *************************************************************************/
-function fetchData(month, year) {
+function fetchData(dateVariable) {
 
 	const options = {
-		url: process.env.URL + test,
+		url: process.env.URL + dateVariable,
 	};
 	
 	request(options, function(error, response, html) {
