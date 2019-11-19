@@ -1,50 +1,38 @@
-module.exports = [
-	{
-		name: 'january',
+module.exports = {
+	january: {
 		days: 31
 	},
-	{
-		name: 'february',
+	february: {
 		days: 29
 	},
-	{
-		name: 'march',
+	march: {
 		days: 31
 	},
-	{
-		name: 'april',
+	april: {
 		days: 30
 	},
-	{
-		name: 'may',
+	may: {
 		days: 31
 	},
-	{
-		name: 'june',
+	june: {
 		days: 30
 	},
-	{
-		name: 'july',
+	july: {
 		days: 31
 	},
-	{
-		name: 'august',
+	august: {
 		days: 31
 	},
-	{
-		name: 'september',
+	september: {
 		days: 30
 	},
-	{
-		name: 'october',
+	october: {
 		days: 31
 	},
-	{
-		name: 'novemer',
+	novemer: {
 		days: 30
 	},
-	{
-		name: 'december',
+	december: {
 		days: 31
 	}
-];
+};
