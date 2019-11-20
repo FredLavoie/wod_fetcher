@@ -7,4 +7,4 @@ To run the script, type the following on the command line from within the projec
 
 `node script.js <year> <month> <day>`
 
-Each argument is either a specific year, month or day,  or 'all'.
+Each argument is either a specific year, month,  or 'all'. If all is selected, the data will be fetched from 2016 to the current year.
