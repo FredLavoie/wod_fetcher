@@ -8,7 +8,7 @@ const currentYear	= Number(moment().format('YYYY'));
 
 exports.urlDateArray = function () {
 	let resultsArray = [];
-	let yearFrom = 2016;
+	let yearFrom = 2017;
 
 	for (let y = yearFrom; y <= currentYear; y++) {
 		if (y === currentYear) {
