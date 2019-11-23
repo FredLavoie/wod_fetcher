@@ -2,3 +2,4 @@ node_modules
 .DS_Stoire
 .env
 .eslintrc.js
+/WODs/*

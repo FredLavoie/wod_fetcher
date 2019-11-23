@@ -4,36 +4,23 @@ require('dotenv').config();
 const fs			= require('fs');
 const request 		= require('request');
 const cheerio		= require('cheerio');
-// const months		= require('./months');
-// const moment		= require('moment');
-const utils			=require('./utils.js');
-const monthParam	= process.argv[2];
-const yearParam		= process.argv[3];
-
-// const currentDay	= moment().format('DD');
-// const currentMonth	= moment().format('MM');
-// const currentYear	= Number(moment().format('YYYY'));
-
+const utils			= require('./utils.js');
+const moment		= require('moment');
+const currentDate	= moment().format('YYYY-MM-DD');
 /* 
 *************************************************************************/
 
-if(!yearParam || !monthParam) {
-	console.log('Input parameter(s) missing');
-} else if(yearParam === 'all' || monthParam === 'all') {
-	let dateArray = utils.urlDateArray(monthParam, yearParam);
-	console.log(dateArray);
-	
-} else if(!!monthParam || !!yearParam) {
-	let dateArray = utils.urlDateArray(monthParam, yearParam);
-	console.log(dateArray);
-}
+let dateArray = utils.urlDateArray();
+dateArray.forEach(dateURLEnd => {
+	fetchData(dateURLEnd, currentDate);
+});
 
 /* FUNCTIONS
 *************************************************************************/
-function fetchData(dateVariable) {
+function fetchData(dateURLEnd, currentDate) {
 
 	const options = {
-		url: process.env.URL + dateVariable,
+		url: process.env.URL + dateURLEnd,
 	};
 	
 	request(options, function(error, response, html) {
@@ -49,10 +36,10 @@ function fetchData(dateVariable) {
 		}
 		const $ = cheerio.load(html);
 		const content = $('.entry-content');
-		console.log(content.text());
-
-		// need to return data each time or send to fs manipulation function
+		const dataToBeWriten = dateURLEnd + '\n' + content.text() + '\n';
+		
+		fs.writeFileSync(`./WODs/${currentDate}.txt`, dataToBeWriten);
 
 	});
-
+	console.log('Fetch completed successfully');
 }

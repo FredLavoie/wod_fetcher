@@ -1,25 +1,28 @@
 const months		= require('./months');
 const moment		= require('moment');
 
-const currentDay	= moment().format('DD');
+const currentDay	= Number(moment().format('DD'));
 const currentMonth	= Number(moment().format('MM'));
 const currentYear	= Number(moment().format('YYYY'));
 
-function urlDateArray(month, year) {
-	let resultsArray = [];
 
-	for (let y = year; y <= currentYear; y++) {
+exports.urlDateArray = function (month, year) {
+	let resultsArray = [];
+	let yearFrom = year;
+	if (year === 'all') yearFrom = 2016;
+	
+	console.log(yearFrom);
+
+	for (let y = yearFrom; y <= currentYear; y++) {
 		for (const month in months) {
 			// if(currentMonth >= month.number && currentYear >= y) {
 				for (let d = 1; d <= months[month].days; d++) {
 
 					let dateVariable1 = `${month}-${d}-${y}/`;
 					resultsArray.push(dateVariable1);
-					// fetchData(dateVariable1);
 					if(d < 10) {
 						let dateVariable2 = `${month}-0${d}-${y}/`;
-						// console.log(dateVariable2);
-						// fetchData(dateVariable2);
+						resultsArray.push(dateVariable2);
 					}
 					let dateVariable3 = '';
 					switch (d) {
@@ -40,14 +43,10 @@ function urlDateArray(month, year) {
 								dateVariable3 = `${month}-${d}th-${y}/`;
 							break;
 					}
-					// console.log(dateVariable3);
-					// fetchData(dateVariable3);
-					
+					resultsArray.push(dateVariable3);
 				}
 			// }
 		}
 	}
 	return resultsArray;
-}
-
-exports.urlDateArray = urlDateArray; 
+};
