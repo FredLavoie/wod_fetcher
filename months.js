@@ -39,7 +39,7 @@ module.exports = {
 		number: 10,
 		days: 31
 	},
-	novemer: {
+	november: {
 		number: 11,
 		days: 30
 	},
