@@ -19,7 +19,6 @@ async function loppThroughArray() {
 			url: process.env.URL + date
 		};
 		await asyncRequest(options, date);
-		console.log('Fetching: ', date);
 	}
 	
 	let endTimeMin = ((Date.now() - startTime) / (1000 * 60)).toFixed(2);
@@ -35,6 +34,7 @@ async function loppThroughArray() {
 async function asyncRequest(options, date) {
 	await rp(options)
 		.then(function(html){
+			console.log('Writing: ', date);
 			const $ = cheerio.load(html);
 			const content = $('.entry-content');
 			const formattedContent = content.text()
