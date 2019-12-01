@@ -18,7 +18,6 @@ async function loppThroughArray() {
 			url: process.env.URL + date
 		};
 		await asyncRequest(options, date);
-		console.log('fetching: ', date);
 	}
 }
 
