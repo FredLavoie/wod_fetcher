@@ -1,14 +1,14 @@
 /* VARIABLE DECLARATION
 **************************************************************************************************/
 require('dotenv').config();
-const fs			= require('fs');
-const rp			= require('request-promise-native');
-const cheerio		= require('cheerio');
-const moment		= require('moment');
-const currentDate	= moment().format('YYYY-MM-DD_hh_mm');
-const utils			= require('./utils.js');
-const inputParam	= process.argv[2];
-let dateArray		= [];
+const fs						= require('fs');
+const rp						= require('request-promise-native');
+const cheerio				= require('cheerio');
+const moment				= require('moment');
+const currentDate		= moment().format('YYYY-MM-DD_hh_mm');
+const utils					= require('./utils.js');
+const inputParam		= process.argv[2];
+let dateArray				= [];
 
 /* FUNCTIONS
 **************************************************************************************************/
@@ -50,22 +50,28 @@ async function asyncRequest(options, date) {
 		});
 }
 
-if(inputParam === 'all') {
-	console.log('Fetching all WODs since 2017');
-	dateArray = utils.allDateArray();
-	loppThroughArray();
-} else if(inputParam === 'year') {
-	console.log('Fetching all WODs this year');
-	dateArray = utils.yearDateArray();
-	loppThroughArray();
-} else if(inputParam === 'month') {
-	console.log('Fetching all WODs this month');
-	dateArray = utils.monthDateArray();
-	loppThroughArray();
-} else if(inputParam === 'day') {
-	console.log('Fetching today\'s WOD');
-	dateArray = utils.dayDateArray();
-	loppThroughArray();
-} else {
-	console.log('Wrong input parameters');
+switch (inputParam) {
+	case 'all':
+		console.log('Fetching all WODs since 2017');
+		dateArray = utils.allDateArray();
+		loppThroughArray();
+		break;
+	case 'year':
+		console.log('Fetching all WODs this year');
+		dateArray = utils.yearDateArray();
+		loppThroughArray();
+		break;
+	case 'month':
+		console.log('Fetching all WODs this month');
+		dateArray = utils.monthDateArray();
+		loppThroughArray();
+		break;
+	case 'day':
+		console.log('Fetching today\'s WOD');
+		dateArray = utils.dayDateArray();
+		loppThroughArray();
+		break;
+	default:
+		console.log('Wrong input parameters');
+		break;
 }
