@@ -45,7 +45,7 @@ async function asyncRequest(options, date) {
 			fs.appendFileSync(`./WODs/${currentDate}.md`, dataToBeWritten, 'utf-8', {'flags':'a+'});
 			fs.appendFileSync(`./WODs/${currentDate}.txt`, dataToBeWritten, 'utf-8', {'flags':'a+'});
 		})
-		.catch(function(error){
+		.catch(function(){
 			return;
 		});
 }
