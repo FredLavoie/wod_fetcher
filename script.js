@@ -24,9 +24,9 @@ async function loppThroughArray() {
 	let endTimeMin = ((Date.now() - startTime) / (1000 * 60)).toFixed(2);
 	let endTimeSec = ((Date.now() - startTime) / (1000)).toFixed(2);
 	if(endTimeMin < 1) {
-		console.log('Fetching completed in: ' + endTimeSec + ' seconds');
+		console.log(`Fetching completed in: ${endTimeSec} seconds`);
 	} else {
-		console.log('Fetching completed in: ' + endTimeMin + ' minutes');
+		console.log(`Fetching completed in: ${endTimeMin} minutes`);
 	}
 
 }
